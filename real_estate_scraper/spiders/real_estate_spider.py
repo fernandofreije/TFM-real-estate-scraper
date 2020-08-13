@@ -6,11 +6,11 @@ from datetime import datetime
 class RealEstateSpider(scrapy.Spider):
     name = "real_estate"
 
-    logging.basicConfig(
-        filename=f'logs/{datetime.now().timestamp()}.log',
-        format='%(levelname)s: %(message)s',
-        level=logging.INFO
-    )
+    # logging.basicConfig(
+    #    filename=f'logs/{datetime.now().timestamp()}.log',
+    #    format='%(levelname)s: %(message)s',
+    #    level=logging.INFO
+    # )
 
     def start_requests(self):
         urls = [
