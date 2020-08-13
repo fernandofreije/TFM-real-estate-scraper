@@ -10,5 +10,8 @@ class TypePipeline:
             '.', '')) if item['rooms'] is not None else item['rooms']
         item['baths'] = int(item['baths'].replace(
             '.', '')) if item['baths'] is not None else item['baths']
+        item['real_estate_agent'] = item['real_estate_agent'] == 'true'
+        item['link'] = f'https://www.pisos.com/${item["link"]}'
+        item['category'] = 'piso' if 'piso' in item['description'].lower() else 'casa'
 
         return item

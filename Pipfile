@@ -10,6 +10,7 @@ Faker = "*"
 scrapy-splash = "*"
 pymongo = "*"
 dnspython = "*"
+pyyaml = "*"
 
 [dev-packages]
 autopep8 = "*"
