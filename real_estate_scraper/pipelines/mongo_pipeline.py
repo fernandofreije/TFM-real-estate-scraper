@@ -14,7 +14,7 @@ class MongoPipeline:
         self.db = self.connection[settings['MONGODB_DB']]
         self.collection = self.db[settings['MONGODB_COLLECTION']]
 
-    def __del__(self):
+    def spider_closed(self, spider, reason):
         self.connection.close()
 
     def process_item(self, item, spider):
