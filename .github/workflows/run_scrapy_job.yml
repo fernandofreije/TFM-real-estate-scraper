@@ -2,23 +2,17 @@
 
 name: Scrapy Cloud Job
 
-
 on:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
   run-scrapy-cloud-job:
     runs-on: ubuntu-latest
     steps:
       - name: Send request
-        uses: actions/hello_world@master
+        uses: fjogeleit/http-request-action@master
         with:
-          first_name: Mona
-          middle_name: The
-          last_name: Octocat      
-
-
-
-  
-                
+          url: "https://app.scrapinghub.com/api/run.json?apikey=2018d259ee75404f93ad43dd8f236dbb"
+          method: "POST"
+          data: '{"project:" 468564, "spider": "real_estate"}'
