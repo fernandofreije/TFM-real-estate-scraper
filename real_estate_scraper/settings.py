@@ -64,8 +64,9 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+    'real_estate_scraper.pipelines.filter_pipeline.FilterPipeline': 100,
     'real_estate_scraper.pipelines.tokenize_pipeline.TokenizePipeline': 200,
-    'real_estate_scraper.pipelines.process_features_item.ProcessFeaturesItem': 300,
+    'real_estate_scraper.pipelines.process_features_pipeline.ProcessFeaturesPipeline': 300,
     'real_estate_scraper.pipelines.type_pipeline.TypePipeline': 400,
     'real_estate_scraper.pipelines.mongo_pipeline.MongoPipeline': 500
 }

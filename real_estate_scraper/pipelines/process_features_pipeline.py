@@ -5,7 +5,7 @@ def only_digits(text):
     return re.sub("\D", "", text)
 
 
-class ProcessFeaturesItem:
+class ProcessFeaturesPipeline:
     def process_item(self, item, spider):
         item['price'] = only_digits(item['price'])
         for char in item['features']:
