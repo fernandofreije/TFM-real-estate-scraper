@@ -9,10 +9,16 @@ on:
 jobs:
   run-scrapy-cloud-job:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.8.5]
     steps:
-      - name: Send request
-        uses: fjogeleit/http-request-action@master
+      - name: checkout repo content
+        uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
         with:
-          url: "https://app.scrapinghub.com/api/run.json?apikey=2018d259ee75404f93ad43dd8f236dbb"
-          method: "POST"
-          data: '{"project:" 468564, "spider": "real_estate"}'
+          python-version: 3.8.5
+      - name: execute py script
+        run: |
+          python schedule_job.py
