@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Scrapy Cloud Job
+
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  run-scrapy-cloud-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send request
+        uses: actions/hello_world@master
+        with:
+          first_name: Mona
+          middle_name: The
+          last_name: Octocat      
+
+
+
+  
+                
