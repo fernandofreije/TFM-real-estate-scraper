@@ -2,7 +2,7 @@ import re
 
 
 def only_digits(text):
-    return re.sub("\D", "", text)
+    return re.sub(r'\D', "", text)
 
 
 class ProcessFeaturesPipeline:

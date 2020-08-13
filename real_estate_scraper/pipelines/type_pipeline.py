@@ -1,7 +1,3 @@
-
-from itemadapter import ItemAdapter
-
-
 class TypePipeline:
     def process_item(self, item, spider):
         item['price'] = int(item['price'].replace(
