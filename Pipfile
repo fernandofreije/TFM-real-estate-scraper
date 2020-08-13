@@ -4,17 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Scrapy = "*"
-pylint = "*"
-Faker = "*"
-scrapy-splash = "*"
 pymongo = "*"
-dnspython = "*"
 pyyaml = "*"
-shub = "*"
+dnspython = "*"
 
 [dev-packages]
 autopep8 = "*"
+scrapy = "*"
+pylint = "*"
+shub = "*"
 
 [requires]
 python_version = "3.8"
