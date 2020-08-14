@@ -23,12 +23,14 @@ class RealEstateSpider(scrapy.Spider):
 
         logging.info(f'JOB TYPE IS -- {job_type}')
 
+        provinces_list = provinces.values()
+        provinces_list.sort()
         if (job_type != 'full'):
-            provinces = provinces[:int(
-                len(provinces)//2)] if job_type == 'half1' else provinces[int(len(provinces)//2):]
+            provinces_list = provinces_list[:int(
+                len(provinces_list)//2)] if job_type == 'half1' else provinces_list[int(len(provinces_list)//2):]
 
         urls = [
-            f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
+            f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces_list
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
