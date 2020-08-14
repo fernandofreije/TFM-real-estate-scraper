@@ -42,7 +42,7 @@ class RealEstateSpider(scrapy.Spider):
                 'operation': 'sale' if 'venta' in response.request.url else 'rent',
             }
 
-        # next_page_url = response.css(
-        #     'div.pager span.item.selected + a.item::attr(href)').get()
-        # if next_page_url is not None:
-        #     yield scrapy.Request(response.urljoin(next_page_url))
+        next_page_url = response.css(
+            'div.pager span.item.selected + a.item::attr(href)').get()
+        if next_page_url is not None:
+            yield scrapy.Request(response.urljoin(next_page_url))
