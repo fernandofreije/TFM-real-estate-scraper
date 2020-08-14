@@ -3,6 +3,7 @@ import scrapy
 import yaml
 from datetime import datetime
 import pkgutil
+from scrapy.utils.project import get_project_settings
 
 
 class RealEstateSpider(scrapy.Spider):
@@ -18,6 +19,13 @@ class RealEstateSpider(scrapy.Spider):
         provinces_raw = pkgutil.get_data(
             "real_estate_scraper", "resources/provinces.yml")
         provinces = yaml.safe_load(provinces_raw)
+
+        job_type = get_project_settings()["JOB_TYPE"]
+
+        provinces_to_run = provinces
+        if (job_type != 'full'):
+            provinces_to_run = provinces[:int(
+                len(A)//2)] if job_type == 'half1' else provinces[int(len(A)//2):]
 
         urls = [
             f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()

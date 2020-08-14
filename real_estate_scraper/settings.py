@@ -74,7 +74,7 @@ ITEM_PIPELINES = {
 MONGODB_CONNECTION_STRING = "mongodb+srv://tfm:frei1996@tfm-real-estate.kovd1.gcp.mongodb.net/real_estate?retryWrites=true&w=majority"
 MONGODB_DB = "real_estate"
 MONGODB_COLLECTION = "flats"
-
+JOB_TIPE = 'full'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
