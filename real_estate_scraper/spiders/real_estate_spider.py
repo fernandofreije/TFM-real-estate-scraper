@@ -1,5 +1,6 @@
 import logging
 import scrapy
+import yaml
 from datetime import datetime
 
 
@@ -7,14 +8,16 @@ class RealEstateSpider(scrapy.Spider):
     name = "real_estate"
 
     # logging.basicConfig(
-    #    filename=f'logs/{datetime.now().timestamp()}.log',
-    #    format='%(levelname)s: %(message)s',
-    #    level=logging.INFO
+    #     filename=f'logs/{datetime.now().timestamp()}.log',
+    #     format='%(levelname)s: %(message)s',
+    #     level=logging.INFO
     # )
 
     def start_requests(self):
+        with open('inputs/provinces.yml', 'r') as provinces_file:
+            provinces = yaml.safe_load(provinces_file)
         urls = [
-            f'https://www.pisos.com/{operation}/pisos-asturias/' for operation in ['venta', 'alquiler']
+            f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
