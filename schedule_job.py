@@ -8,6 +8,7 @@ class ScrapyCloudJob:
         self.job_type = job_type
 
     def run(self):
+        print(self.job_type)
         return requests.post("https://app.scrapinghub.com/api/run.json?apikey=2018d259ee75404f93ad43dd8f236dbb",
                              data={"project": 468564, "spider": 'real_estate', "job_settings": f'{{"JOB_TYPE": "{self.job_type}"}}'})
 
