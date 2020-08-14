@@ -18,7 +18,6 @@ class MongoPipeline:
         self.connection.close()
 
     def process_item(self, item, spider):
-        self.collection.find()
         if self.collection.find_one({'remote_id': item['remote_id']}):
             self.collection.update(
                 {'remote_id': item['remote_id']},
