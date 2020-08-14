@@ -14,7 +14,7 @@ class RealEstateSpider(scrapy.Spider):
     # )
 
     def start_requests(self):
-        with open('inputs/provinces.yml', 'r') as provinces_file:
+        with open('resources/provinces.yml', 'r') as provinces_file:
             provinces = yaml.safe_load(provinces_file)
         urls = [
             f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
