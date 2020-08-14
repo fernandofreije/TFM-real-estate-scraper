@@ -4,7 +4,7 @@ name: Scrapy Cloud Job First Half
 
 on:
   schedule:
-    - cron: "0 8 * * *"
+    - cron: "0 8,14,18 * * *"
 
 jobs:
   run-scrapy-cloud-job:
