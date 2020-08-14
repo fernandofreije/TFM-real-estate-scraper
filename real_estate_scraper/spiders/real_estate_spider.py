@@ -23,7 +23,7 @@ class RealEstateSpider(scrapy.Spider):
 
         logging.info(f'JOB TYPE IS -- {job_type}')
 
-        provinces_list = provinces.values()
+        provinces_list = list(provinces.values())
         provinces_list.sort()
         if (job_type != 'full'):
             provinces_list = provinces_list[:int(
