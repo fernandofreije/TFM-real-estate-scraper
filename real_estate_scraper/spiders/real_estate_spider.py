@@ -22,7 +22,7 @@ class RealEstateSpider(scrapy.Spider):
 
         job_type = get_project_settings()["JOB_TYPE"]
 
-        province.sort()
+        provinces.sort()
         provinces_to_run = provinces
         if (job_type != 'full'):
             provinces_to_run = provinces[:int(
