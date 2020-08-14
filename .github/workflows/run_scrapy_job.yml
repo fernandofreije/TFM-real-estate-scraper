@@ -26,4 +26,4 @@ jobs:
           pipenv install
       - name: execute py script
         run: |
-          python schedule_job.py
+          pipenv run python schedule_job.py
