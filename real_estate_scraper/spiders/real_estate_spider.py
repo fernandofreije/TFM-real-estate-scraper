@@ -2,6 +2,7 @@ import logging
 import scrapy
 import yaml
 from datetime import datetime
+import pkgutil
 
 
 class RealEstateSpider(scrapy.Spider):
@@ -14,8 +15,10 @@ class RealEstateSpider(scrapy.Spider):
     # )
 
     def start_requests(self):
-        with open('resources/provinces.yml', 'r') as provinces_file:
-            provinces = yaml.safe_load(provinces_file)
+        provinces_raw = pkgutil.get_data(
+            "real_estate_scraper", "resources/provinces.yml")
+        provinces = yaml.safe_load(provinces_raw)
+
         urls = [
             f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
         ]
@@ -39,7 +42,7 @@ class RealEstateSpider(scrapy.Spider):
                 'operation': 'sale' if 'venta' in response.request.url else 'rent',
             }
 
-        next_page_url = response.css(
-            'div.pager span.item.selected + a.item::attr(href)').get()
-        if next_page_url is not None:
-            yield scrapy.Request(response.urljoin(next_page_url))
+        # next_page_url = response.css(
+        #     'div.pager span.item.selected + a.item::attr(href)').get()
+        # if next_page_url is not None:
+        #     yield scrapy.Request(response.urljoin(next_page_url))
