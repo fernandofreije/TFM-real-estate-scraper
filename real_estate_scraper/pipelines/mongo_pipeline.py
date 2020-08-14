@@ -30,6 +30,6 @@ class MongoPipeline:
                 {**dict(item), **{'created_at': datetime.now(),
                                   'updated_at': datetime.now()}}
             )
-            logging.info(f"Added item with id -- {item['remote_id']}")
+            logging.info(f"Added item with with link -- {item['link']}")
 
         return item

@@ -26,6 +26,7 @@ class RealEstateSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
+        logging.info(f'Parsing page {response.request.url}')
         for real_estate in response.css('.parrilla-bg #parrilla.Listado .row'):
             real_estate.css('div.characteristics .item').getall()
             yield {
