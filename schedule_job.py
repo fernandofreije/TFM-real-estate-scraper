@@ -12,7 +12,7 @@ class ScrapyCloudJob:
         separator = ","
         return requests.post("https://app.scrapinghub.com/api/run.json?apikey=2018d259ee75404f93ad43dd8f236dbb",
                              data={"project": 468564, "spider": 'real_estate',
-                                   "job_settings": f'{{"JOB_TYPE": "{separator.join(self.to_scrap)}"}}'})
+                                   "job_settings": f'{{"PROVINCES_TO_SCRAP": "{separator.join(self.to_scrap)}"}}'})
 
 
 if __name__ == "__main__":
