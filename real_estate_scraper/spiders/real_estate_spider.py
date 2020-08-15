@@ -19,18 +19,18 @@ class RealEstateSpider(scrapy.Spider):
             "real_estate_scraper", "resources/provinces.yml")
         provinces = yaml.safe_load(provinces_raw)
 
-        job_type = self.settings["JOB_TYPE"]
+        to_scrap = self.settings["PROVINCES_TO_SCRAP"]
 
         logging.info(f'JOB TYPE IS -- {job_type}')
 
-        provinces_list = list(provinces.values())
-        provinces_list.sort()
-        if (job_type != 'full'):
-            provinces_list = provinces_list[:int(
-                len(provinces_list)//2)] if job_type == 'half1' else provinces_list[int(len(provinces_list)//2):]
+        if (to_scrap != 'all'):
+            provinces = {key: value for key,
+                         value in provinces.items() if key in to_scrap.split(',')}
+
+        logging.ingo(f'Provinces to scrap - - {provinces.keys()}')
 
         urls = [
-            f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces_list
+            f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
