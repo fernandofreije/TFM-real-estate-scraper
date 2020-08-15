@@ -1,10 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Scrapy Cloud Job Batch 1
+name: Scrapy Cloud Job Batch 5
 
 on:
   schedule:
-    - cron: "0 2,14 * * *"
+    - cron: "0 8,20 * * *"
 
 jobs:
   run-scrapy-cloud-job:
@@ -26,4 +26,4 @@ jobs:
           pipenv install
       - name: execute py script
         run: |
-          pipenv run python schedule_job.py A_Coruña Álava Albacete Alicante Almería Asturias Ávila
+          pipenv run python schedule_job.py La_Rioja Las_Palmas León Lleida Logroño Lugo Madrid
