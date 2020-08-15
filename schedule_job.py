@@ -22,3 +22,5 @@ if __name__ == "__main__":
         provinces = [province.replace('_', ' ') for province in sys.argv[1:]]
         response = ScrapyCloudJob(to_scrap=provinces).run()
     print(response.content)
+    if (response.status_code != 200):
+        raise Exception('Error scheduling the job')
