@@ -23,12 +23,12 @@ class MongoPipeline:
                 {'remote_id': item['remote_id']},
                 {'$set': {**dict(item), **{'updated_at': datetime.now()}}}
             )
-            logging.info(f"Updated item with id -- {item['remote_id']}")
+            logging.info(f"Updated item with with link -- {item['link']}")
         else:
             self.collection.insert(
                 {**dict(item), **{'created_at': datetime.now(),
                                   'updated_at': datetime.now()}}
             )
-            logging.info(f"Added item with with link -- {item['link']}")
+            logging.info(f"Inserted new item with with link -- {item['link']}")
 
         return item
