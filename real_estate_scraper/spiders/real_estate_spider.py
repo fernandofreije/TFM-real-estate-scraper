@@ -21,13 +21,11 @@ class RealEstateSpider(scrapy.Spider):
 
         to_scrap = self.settings["PROVINCES_TO_SCRAP"]
 
-        logging.info(f'JOB TYPE IS -- {job_type}')
-
         if (to_scrap != 'all'):
             provinces = {key: value for key,
                          value in provinces.items() if key in to_scrap.split(',')}
 
-        logging.ingo(f'Provinces to scrap - - {provinces.keys()}')
+        logging.info(f'Provinces to scrap - - {provinces.keys()}')
 
         urls = [
             f'https://www.pisos.com/{operation}/pisos-{province}/' for operation in ['venta', 'alquiler'] for province in provinces.values()
