@@ -21,6 +21,7 @@ class RealEstateSpider(scrapy.Spider):
 
         to_scrap = self.settings["PROVINCES_TO_SCRAP"]
 
+        logging.info(f'To scrap config -- {to_scrap}')
         if (to_scrap != 'all'):
             provinces = {key: value for key,
                          value in provinces.items() if key in to_scrap.split(',')}
