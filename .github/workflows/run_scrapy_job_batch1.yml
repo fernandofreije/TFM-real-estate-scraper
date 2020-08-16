@@ -26,4 +26,4 @@ jobs:
           pipenv install
       - name: execute py script
         run: |
-          pipenv run python schedule_job.py A_Coruña Álava Albacete Alicante Almería Asturias Ávila
+          pipenv run python schedule_job.py A_Coruña Álava Albacete Alicante Almería Asturias Ávila Badajoz Baleares Barcelona Burgos Cáceres

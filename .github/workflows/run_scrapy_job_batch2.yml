@@ -4,7 +4,7 @@ name: Scrapy Cloud Job Batch 2
 
 on:
   schedule:
-    - cron: "30 3,15 * * *"
+    - cron: "0 5,17 * * *"
 
 jobs:
   run-scrapy-cloud-job:
@@ -26,4 +26,4 @@ jobs:
           pipenv install
       - name: execute py script
         run: |
-          pipenv run python schedule_job.py Badajoz Baleares Barcelona Burgos Cáceres
+          pipenv run python schedule_job.py Cádiz Cantabria Castellón Ceuta Ciudad_Real Córdoba Gipuzkoa Girona Granada Guadalajara Huelva Huesca Jaén
