@@ -47,7 +47,7 @@ class RealEstateSpider(scrapy.Spider):
                 'imageLink': real_estate.css('.overInfo img::attr(src)').get(),
                 'features':  real_estate.css('div.characteristics div.item::text').getall(),
                 'link': real_estate.css('a.anuncioLink::attr(href)').get(),
-                'real_estate_agent': real_estate.xpath('./@data-is-from-especialista').get(),
+                'real_estate_agent': real_estate.css('img.anunciante-logo').get(),
                 'remote_id': real_estate.xpath('./@id').get(),
                 'operation': 'sale' if 'venta' in response.request.url else 'rent',
             }
