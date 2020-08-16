@@ -4,7 +4,7 @@ name: Scrapy Cloud Job Batch 3
 
 on:
   schedule:
-    - cron: "0 7,16 * * *"
+    - cron: "0 7,16,21 * * *"
 
 jobs:
   run-scrapy-cloud-job:
