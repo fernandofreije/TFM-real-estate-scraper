@@ -50,7 +50,7 @@ class RealEstateSpider(scrapy.Spider):
                 'real_estate_agent': real_estate.css('img.anunciante-logo').get(),
                 'remote_id': real_estate.xpath('./@id').get(),
                 'operation': 'sale' if 'venta' in response.request.url else 'rent',
-                'province': real_estate.css('.title b::text').get(),
+                'province': response.css('.title b::text').get(),
             }
 
         next_page_url = response.css(
