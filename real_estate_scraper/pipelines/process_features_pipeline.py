@@ -9,7 +9,7 @@ class ProcessFeaturesPipeline:
     def process_item(self, item, spider):
         item['price'] = only_digits(item['price'])
         for char in item['features']:
-            if 'm²' in char.lower():
+            if 'm²' in char.lower() and '€' not in char.lower():
                 item['size'] = int(only_digits(char))
             elif 'planta' in char.lower():
                 item['floor'] = int(only_digits(char))
