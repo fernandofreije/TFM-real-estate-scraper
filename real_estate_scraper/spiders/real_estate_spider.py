@@ -38,6 +38,8 @@ class RealEstateSpider(scrapy.Spider):
 
     def parse(self, response):
         logging.info(f'Parsing page {response.request.url}')
+        page = response.css('.pager .item.selected::text').get()
+        position = 1
         for real_estate in response.css('.parrilla-bg #parrilla.Listado .row'):
             real_estate.css('div.characteristics .item').getall()
             yield {
@@ -53,7 +55,9 @@ class RealEstateSpider(scrapy.Spider):
                 'remote_id': real_estate.xpath('./@id').get(),
                 'operation': 'sale' if 'venta' in response.request.url else 'rent',
                 'province': response.meta['province'],
+                'page-position': f'{page}-{position}'
             }
+            position += 1
 
         next_page_url = response.css(
             'div.pager span.item.selected + a.item::attr(href)').get()
