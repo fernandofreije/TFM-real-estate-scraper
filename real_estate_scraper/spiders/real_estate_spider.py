@@ -30,7 +30,7 @@ class RealEstateSpider(scrapy.Spider):
 
         for province, province_url_name in provinces.items():
             urls = [
-                f'https://www.pisos.com/{operation}/pisos-{province_url_name}/' for operation in ['venta', 'alquiler']
+                f'https://www.pisos.com/{operation}/pisos-{province_url_name}/fecharecientedesde-desc/' for operation in ['venta', 'alquiler']
             ]
 
             for url in urls:
