@@ -62,4 +62,4 @@ class RealEstateSpider(scrapy.Spider):
         next_page_url = response.css(
             'div.pager span.item.selected + a.item::attr(href)').get()
         if next_page_url is not None:
-            yield scrapy.Request(response.urljoin(next_page_url))
+            yield scrapy.Request(response.urljoin(next_page_url), meta={'province': response.meta['province']})
