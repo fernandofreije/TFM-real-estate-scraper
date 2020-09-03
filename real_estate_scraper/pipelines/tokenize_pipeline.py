@@ -1,7 +1,7 @@
 import re
 from collections.abc import Iterable
 
-DO_NOT_PROCESS = ['province']
+DO_NOT_PROCESS = ['province', 'description']
 
 
 class TokenizePipeline:
